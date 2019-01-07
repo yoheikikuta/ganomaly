@@ -20,6 +20,8 @@ rc('font', **{'family': 'serif', 'serif': ['Computer Modern']})
 rc('text', usetex=True)
 
 def evaluate(labels, scores, metric='roc'):
+    labels = labels.cpu()
+    scores = scores.cpu()
     if metric == 'roc':
         return roc(labels, scores)
     elif metric == 'auprc':
